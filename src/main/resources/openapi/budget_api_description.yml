@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Budgeting app
+  description: |-
+    A budgeting app that gives more granularity to spending
+    by tracking not just transactions, but what was bought in
+    each transaction. Reports are generated based the transaction
+    category and items in each transaction.
+  version: 1.0-SNAPSHOT
+servers:
+  - url: https://testenvironment.org/api/v1
+  - url: https://prodenvironment.org/api/v1
+tags:
+  - name: user, transaction, account, transaction_item, subscription
+paths:
+  /account/{userId}:
+    $ref: 'account/account-paths.yml#/paths/~1account~1{userId}'
+  /account/{accountId}:
+    $ref: 'account/account-paths.yml#/paths/~1account~1{accountId}'
+  /account:
+    $ref: 'account/account-paths.yml#/paths/~1account'
