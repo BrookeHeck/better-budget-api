@@ -1,4 +1,7 @@
 package com.betterbudget.budget.data.repository;
 
-public class UserRepository {
+import com.betterbudget.budget.data.entity_model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }
