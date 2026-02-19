@@ -88,6 +88,12 @@
 			<version>2.2.34</version>
 		</dependency>
 		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>5.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.42</version>
@@ -178,6 +184,17 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>5.0.0</version>
+				<configuration>
+					<changeLogFile>src/main/resources/changelog.yml</changeLogFile>
+					<url>jdbc:postgresql://localhost:5432/better_budget</url>
+					<username>bheck</username>
+					<password>testing_testing</password>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

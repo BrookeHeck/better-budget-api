@@ -2,7 +2,6 @@ spring:
   application:
     name: budget
   datasource:
-    # Format: jdbc:postgresql://{host}:{port}/{database_name}
     url: jdbc:postgresql://localhost:5432/better_budget
     username: bheck
     password: testing_testing
@@ -11,3 +10,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    liquibase: debug

@@ -9,18 +9,19 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account {
+@Table(name = "bb_user")
+public class User {
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountId;
+    @Column(name = "id")
+    private Long userId;
 
-    private String name;
+    private String email;
 
-    private double balance;
+    private String firstName;
 
-    private String type;
+    private String lastName;
 
-    @ManyToOne
-    private User user;
+    private String status;
+
 }
