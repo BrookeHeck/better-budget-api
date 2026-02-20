@@ -1,0 +1,75 @@
+paths:
+  /transaction-item:
+    post:
+      operationId: createTransactionItem
+      tags:
+        - transaction-item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'
+      responses:
+        '201':
+          description: Successfully created transaction item
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'
+    put:
+      operationId: updateTransactionItem
+      tags:
+        - transaction-item
+      description: Update transaction item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'
+      responses:
+        '200':
+          description: Successfully updated transaction item
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'
+  /transaction-item/{transactionId}:
+    get:
+      operationId: getTransactionItemsByTransactionId
+      tags:
+        - transaction-item
+      description: Get transaction items by transaction id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: Transaction id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved transaction items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'
+  /transaction-item/{transactionItemId}:
+    delete:
+      operationId: deleteTransactionItem
+      tags:
+        - transaction-item
+      description: Delete transaction item
+      parameters:
+        - name: transactionItemId
+          in: path
+          required: true
+          description: Transaction item id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully deleted transaction item

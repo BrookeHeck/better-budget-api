@@ -41,6 +41,7 @@ paths:
       operationId: createTransaction
       tags:
         - transaction
+      description: Create a transaction
       requestBody:
         content:
           application/json:
