@@ -7,6 +7,7 @@ import org.openapitools.model.Transaction;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -28,9 +29,10 @@ public class TransactionController implements TransactionApi {
     }
 
     @Override
-    public ResponseEntity<List<Transaction>> getTransactionsByUserId(Long userId) {
+    public ResponseEntity<List<Transaction>> getTransactionsByUserId(Long userId, @Nullable LocalDate startDate, @Nullable LocalDate endDate) {
         return null;
     }
+
 
     @Override
     public ResponseEntity<Transaction> updateTransaction(@Nullable Transaction transaction) {

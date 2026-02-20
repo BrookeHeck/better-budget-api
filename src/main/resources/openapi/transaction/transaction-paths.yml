@@ -75,7 +75,7 @@ paths:
       operationId: getTransactionsByUserId
       tags:
         - transaction
-      description: Get transactions by user id
+      description: Get transactions by user id between query param dates. Defaults to current month if query params are not provided.
       parameters:
         - name: userId
           in: path
@@ -84,6 +84,20 @@ paths:
           schema:
             type: integer
             format: int64
+        - name: startDate
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Start date for filtering results (inclusive).
+          example: "2026-01-01"
+        - name: endDate
+          in: query
+          schema:
+            type: string
+            format: date
+          description: End date for filtering results (inclusive).
+          example: "2026-01-31"
       responses:
         '200':
           description: Successfully retrieved transactions
