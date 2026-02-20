@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.openapitools.api.UserApi;
 import org.openapitools.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,11 +16,11 @@ public class UserController implements UserApi {
 
     @Override
     public ResponseEntity<User> login() {
-        return null;
+        return new ResponseEntity<>(userService.login("test", "test"), HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<User> register(@Nullable User user) {
-        return null;
+        return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
     }
 }

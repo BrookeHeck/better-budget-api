@@ -11,4 +11,6 @@ public interface UserMapper {
     UserEntity dtoToEntity(UserDto userDto);
     UserDto apiModelToDtoModel(User user);
     User dtoModelToApiModel(UserDto userDto);
+    UserEntity apiModelToEntity(User user);
+    User entityToApiModel(UserEntity userEntity);
 }
