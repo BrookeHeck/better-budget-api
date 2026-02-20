@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 2026-02-17.create_a_user_table
+      id: 001
       author: brooke.heck
       changes:
         - createTable:
@@ -36,10 +36,6 @@ databaseChangeLog:
               - column:
                   name: status
                   type: varchar(10)
-  - changeSet:
-      id: 2026-02-17.create_a_account_table
-      author: brooke.heck
-      changes:
         - createTable:
             tableName: account
             columns:
@@ -68,16 +64,6 @@ databaseChangeLog:
               - column:
                   name: user_id
                   type: bigint
-                  constraints:
-                    foreignKeyName: fk_account_user_id
-                    nullable: false
-                    referencedTableName: user
-                    referencedColumnNames: id
-                    deleteCascade: true
-  - changeSet:
-      id: 2026-02-17.create_c_transaction_table
-      author: brooke.heck
-      changes:
         - createTable:
             tableName: transaction
             columns:
@@ -104,25 +90,9 @@ databaseChangeLog:
               - column:
                   name: user_id
                   type: bigint
-                  constraints:
-                    foreignKeyName: fk_transaction_user_id
-                    nullable: false
-                    referencedTableName: user
-                    referencedColumnNames: id
-                    deleteCascade: true
               - column:
                   name: account_id
                   type: bigint
-                  constraints:
-                    foreignKeyName: fk_transaction_account_id
-                    nullable: false
-                    referencedTableName: account
-                    referencedColumnNames: id
-                    deleteCascade: true
-  - changeSet:
-      id: 2026-02-17.create_d_transaction_item_table
-      author: brooke.heck
-      changes:
         - createTable:
             tableName: transaction_item
             columns:
@@ -141,9 +111,28 @@ databaseChangeLog:
                   type: double
               - column:
                   name: transaction_id
-                  constraints:
-                    foreignKeyName: fk_transaction_item_transaction_id
-                    nullable: false
-                    referencedTableName: transaction
-                    referencedColumnNames: id
-                    deleteCascade: true
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseTableName: account
+            baseColumnNames: user_id
+            referencedTableName: bb_user
+            referencedColumnNames: id
+            constraintName: fk_user
+        - addForeignKeyConstraint:
+            baseTableName: transaction
+            baseColumnNames: user_id
+            referencedTableName: bb_user
+            referencedColumnNames: id
+            constraintName: fk_user
+        - addForeignKeyConstraint:
+            baseTableName: transaction
+            baseColumnNames: account_id
+            referencedTableName: account
+            referencedColumnNames: id
+            constraintName: fk_account
+        - addForeignKeyConstraint:
+            baseTableName: transaction_item
+            baseColumnNames: transaction_id
+            referencedTableName: transaction
+            referencedColumnNames: id
+            constraintName: fk_transaction
