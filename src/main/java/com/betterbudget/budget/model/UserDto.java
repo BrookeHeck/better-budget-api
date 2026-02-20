@@ -1,27 +1,20 @@
-package com.betterbudget.budget.data.entity_model;
+package com.betterbudget.budget.model;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "bb_user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+@AllArgsConstructor
+@Builder
+public class UserDto {
     private Long userId;
-
     private String email;
-
     private String firstName;
-
     private String lastName;
-
     private String status;
-
 }

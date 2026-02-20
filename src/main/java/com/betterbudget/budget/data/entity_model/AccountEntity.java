@@ -1,6 +1,12 @@
 package com.betterbudget.budget.data.entity_model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +15,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account {
+@Table(name = "account")
+public class AccountEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +24,10 @@ public class Account {
 
     private String name;
 
-    private double balance;
+    private Double balance;
 
     private String type;
 
     @ManyToOne
-    private User user;
+    private UserEntity user;
 }
