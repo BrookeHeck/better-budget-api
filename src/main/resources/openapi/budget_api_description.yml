@@ -23,6 +23,12 @@ paths:
     $ref: 'user/user-paths.yml#/paths/~1login'
   /register:
     $ref: 'user/user-paths.yml#/paths/~1register'
+  /transaction/{transactionId}:
+    $ref: 'transaction/transaction-paths.yml#/paths/~1transaction~1{transactionId}'
+  /transaction:
+    $ref: 'transaction/transaction-paths.yml#/paths/~1transaction'
+  /transaction/{userId}:
+    $ref: 'transaction/transaction-paths.yml#/paths/~1transaction~1{userId}'
 components:
   securitySchemes:
     basicAuth:

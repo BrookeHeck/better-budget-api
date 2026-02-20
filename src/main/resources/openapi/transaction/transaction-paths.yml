@@ -1,0 +1,95 @@
+paths:
+  /transaction/{transactionId}:
+    get:
+      operationId: getTransactionById
+      tags:
+        - transaction
+      description: Get transaction by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: Id of transaction
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved transaction
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-components.yml#/components/schemas/Transaction'
+    delete:
+      operationId: deleteTransactionById
+      tags:
+        - transaction
+      description: Delete transaction by id
+      parameters:
+        - name: transactionId
+          in: path
+          required: true
+          description: Id of transaction
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully deleted transaction
+  /transaction:
+    post:
+      operationId: createTransaction
+      tags:
+        - transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './transaction-components.yml#/components/schemas/Transaction'
+      responses:
+        '201':
+          description: Successfully created transaction
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-components.yml#/components/schemas/Transaction'
+    put:
+      operationId: updateTransaction
+      tags:
+        - transaction
+      description: Update transaction
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './transaction-components.yml#/components/schemas/Transaction'
+      responses:
+        '200':
+          description: Successfully updated transaction
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-components.yml#/components/schemas/Transaction'
+  /transaction/{userId}:
+    get:
+      operationId: getTransactionsByUserId
+      tags:
+        - transaction
+      description: Get transactions by user id
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: Id of user
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved transactions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './transaction-components.yml#/components/schemas/Transaction'

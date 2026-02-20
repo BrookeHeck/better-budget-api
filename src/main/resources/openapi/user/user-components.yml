@@ -6,7 +6,7 @@ components:
           type: integer
           format: int64
           example: 12
-          description: Id of user
+          description: User identifier
         email:
           type: string
           example: test@gmail.com

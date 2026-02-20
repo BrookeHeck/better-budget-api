@@ -3,9 +3,12 @@ package com.betterbudget.budget.mapper;
 import com.betterbudget.budget.data.entity_model.UserEntity;
 import com.betterbudget.budget.model.UserDto;
 import org.mapstruct.Mapper;
+import org.openapitools.model.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     UserDto entityToDto(UserEntity userEntity);
     UserEntity dtoToEntity(UserDto userDto);
+    UserDto apiModelToDtoModel(User user);
+    User dtoModelToApiModel(UserDto userDto);
 }

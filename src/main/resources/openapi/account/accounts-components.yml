@@ -8,13 +8,14 @@ components:
           type: integer
           format: int64
           example: 123
-          description: Id of the account
+          description: account identifier
         name:
           type: string
           description: Name of the account
           example: Savings Account
         balance:
           type: number
+          format: double
           example: 100.49
         accountType:
           type: string
@@ -25,8 +26,7 @@ components:
             - SAVING
             - LOAN
             - CREDIT
-        userId:
-          type: integer
-          format: int64
-          example: 23
-          description: The id of the user the account belongs to
+        user:
+          type: object
+          allOf:
+            - $ref: './../user/user-components.yml#/components/schemas/User'

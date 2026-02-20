@@ -1,0 +1,32 @@
+components:
+  schemas:
+    Transaction:
+      properties:
+        transactionId:
+          type: integer
+          format: int64
+          example: 244
+          description: Transaction identifier
+        category:
+          type: string
+          example: "Automotive"
+          description: Transaction category
+        amount:
+          type: number
+          format: double
+          example: 100.00
+          description: Transaction amount
+        description:
+          type: string
+          example: "New tires and brakes"
+          description: Transaction description
+        account:
+          type: object
+          description: Account associated with the transaction
+          allOf:
+            - $ref: './../account/accounts-components.yml#/components/schemas/Account'
+        user:
+          type: object
+          description: User associated with the transaction
+          allOf:
+            - $ref: './../user/user-components.yml#/components/schemas/User'
