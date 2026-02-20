@@ -19,3 +19,12 @@ paths:
     $ref: 'account/account-paths.yml#/paths/~1account~1{accountId}'
   /account:
     $ref: 'account/account-paths.yml#/paths/~1account'
+  /login:
+    $ref: 'user/user-paths.yml#/paths/~1login'
+  /register:
+    $ref: 'user/user-paths.yml#/paths/~1register'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,32 @@
+paths:
+  /login:
+    post:
+      operationId: login
+      tags:
+        - user
+      security:
+        - basicAuth: [ ]
+      responses:
+        '201':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: './user-components.yml#/components/schemas/User'
+  /register:
+    post:
+      operationId: register
+      tags:
+        - user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './user-components.yml#/components/schemas/User'
+      responses:
+        '201':
+          description: Registration successful
+          content:
+            application/json:
+              schema:
+                $ref: './user-components.yml#/components/schemas/User'

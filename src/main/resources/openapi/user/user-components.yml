@@ -1,0 +1,30 @@
+components:
+  schemas:
+    User:
+      properties:
+        userId:
+          type: integer
+          format: int64
+          example: 12
+          description: Id of user
+        email:
+          type: string
+          example: test@gmail.com
+          description: Email of user
+        password:
+          type: string
+          example:
+          description: Password of user
+        firstName:
+          type: string
+          example: Alex
+          description: First name of user
+        lastName:
+          type: string
+          example: Smith
+          description: Last name of user
+        status:
+          type: string
+          example: ACTIVE
+          description: Status of user
+          enum: [ACTIVE, INACTIVE]

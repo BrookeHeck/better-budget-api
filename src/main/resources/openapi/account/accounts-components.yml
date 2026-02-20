@@ -4,7 +4,7 @@ components:
       type: object
       description: bank, loan, or credit account details
       properties:
-        id:
+        accountId:
           type: integer
           format: int64
           example: 123
