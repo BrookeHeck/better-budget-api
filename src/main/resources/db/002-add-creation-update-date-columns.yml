@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002
+      author: brooke.heck
+      changes:
+        - addColumn:
+            tableName: account
+            columns:
+              - column:
+                  name: created_at
+                  type: datetime
+              - column:
+                  name: updated_at
+                  type: datetime
+        - addColumn:
+            tableName: transaction
+            columns:
+                - column:
+                    name: created_at
+                    type: datetime
+                - column:
+                    name: updated_at
+                    type: datetime
+                - column:
+                    name: date_of_transaction
+                    type: date
+        - addColumn:
+            tableName: transaction_item
+            columns:
+                - column:
+                    name: created_at
+                    type: datetime
+                - column:
+                    name: updated_at
+                    type: datetime
+        - addColumn:
+            tableName: bb_user
+            columns:
+                - column:
+                    name: created_at
+                    type: datetime
+                - column:
+                    name: updated_at
+                    type: datetime

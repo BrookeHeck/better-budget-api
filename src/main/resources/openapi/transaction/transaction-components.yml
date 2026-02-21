@@ -20,6 +20,10 @@ components:
           type: string
           example: "New tires and brakes"
           description: Transaction description
+        dateOfTransaction:
+          type: string
+          format: date
+          example: "2020-01-01"
         account:
           type: object
           description: Account associated with the transaction

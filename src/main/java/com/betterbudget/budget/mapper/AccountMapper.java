@@ -4,6 +4,7 @@ import com.betterbudget.budget.data.entity_model.AccountEntity;
 import com.betterbudget.budget.model.AccountDto;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.NullValueMappingStrategy;
 import org.openapitools.model.Account;
 

@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,4 +21,7 @@ public class TransactionDto {
     private String description;
     private AccountDto account;
     private UserDto user;
+    private LocalDate dateOfTransaction;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

@@ -10,6 +10,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Getter
@@ -28,4 +30,10 @@ public class TransactionItemEntity {
 
     @ManyToOne
     private TransactionEntity transaction;
+
+    @CreationTimestamp
+    private Long createdAt;
+
+    @UpdateTimestamp
+    private Long updatedAt;
 }

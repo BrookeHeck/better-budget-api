@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Getter
@@ -31,4 +33,10 @@ public class UserEntity {
     private String lastName;
 
     private String status;
+
+    @CreationTimestamp
+    private Long createdAt;
+
+    @UpdateTimestamp
+    private Long updatedAt;
 }
