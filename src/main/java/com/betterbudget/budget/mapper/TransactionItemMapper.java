@@ -1,6 +1,7 @@
 package com.betterbudget.budget.mapper;
 
 import com.betterbudget.budget.data.entity_model.TransactionEntity;
+import com.betterbudget.budget.data.entity_model.TransactionItemEntity;
 import com.betterbudget.budget.model.TransactionItemDto;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
@@ -20,5 +21,8 @@ public interface TransactionItemMapper {
     TransactionEntity apiModelToEntity(TransactionItem transactionItem);
 
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
-    List<TransactionItem> entityListToApiModelList(List<TransactionEntity> transactions);
+    List<TransactionItem> entityListToApiModelList(List<TransactionItemEntity> transactions);
+
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
+    List<TransactionItemEntity> apiModelListToEntityList(List<TransactionItem> transactions);
 }

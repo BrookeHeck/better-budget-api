@@ -12,6 +12,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
@@ -35,8 +37,8 @@ public class UserEntity {
     private String status;
 
     @CreationTimestamp
-    private Long createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private Long updatedAt;
+    private LocalDateTime updatedAt;
 }
