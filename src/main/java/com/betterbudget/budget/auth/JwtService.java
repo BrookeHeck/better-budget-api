@@ -16,7 +16,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
-    @Value("${spring.security.secret-key}")
+    @Value("${SECRET_KEY}")
     private String SECRET_KEY;
 
     public String extractUsername(String jwt) {
