@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -32,8 +35,8 @@ public class TransactionItemEntity {
     private TransactionEntity transaction;
 
     @CreationTimestamp
-    private Long createdAt;
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private Long updatedAt;
+    private LocalDateTime updatedAt;
 }

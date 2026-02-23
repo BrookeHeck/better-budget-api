@@ -5,3 +5,6 @@ databaseChangeLog:
   - include:
       file: 002-add-creation-update-date-columns.yml
       relativeToChangelogFile: true
+  - include:
+      file: 003-add-test-user.yml
+      relativeToChangelogFile: true

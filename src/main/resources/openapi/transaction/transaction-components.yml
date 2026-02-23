@@ -24,13 +24,13 @@ components:
           type: string
           format: date
           example: "2020-01-01"
-        account:
-          type: object
-          description: Account associated with the transaction
-          allOf:
-            - $ref: './../account/accounts-components.yml#/components/schemas/Account'
-        user:
-          type: object
-          description: User associated with the transaction
-          allOf:
-            - $ref: './../user/user-components.yml#/components/schemas/User'
+        accountId:
+          type: number
+          format: int64q
+          description: Account id associated with the transaction
+          example: 62
+        userId:
+          type: number
+          format: int64
+          description: User id associated with the transaction
+          example: 5

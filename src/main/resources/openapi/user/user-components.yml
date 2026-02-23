@@ -13,7 +13,7 @@ components:
           description: Email of user
         password:
           type: string
-          example:
+          example: my_password
           description: Password of user
         firstName:
           type: string
@@ -27,4 +27,13 @@ components:
           type: string
           example: ACTIVE
           description: Status of user
-          enum: [ACTIVE, INACTIVE]
+          enum: [ ACTIVE, INACTIVE ]
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: jwt-token-fsdjkjfefjkl533
+          description: JWT authorization token
+        user:
+          $ref: '#/components/schemas/User'

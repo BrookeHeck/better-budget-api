@@ -16,12 +16,16 @@ public interface AccountMapper {
 
     AccountEntity dtoToEntity(AccountDto accountDto);
 
+    @Mapping(target = "user.userId", source = "userId")
     AccountDto apiModelToDtoModel(Account account);
 
+    @Mapping(target = "userId", source = "user.userId")
     Account dtoModelToApiModel(AccountDto accountDto);
 
+    @Mapping(target = "user.userId", source = "userId")
     AccountEntity apiModelToEntity(Account account);
 
+    @Mapping(target = "userId", source = "user.userId")
     Account entityToApiModel(AccountEntity accountEntity);
 
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)

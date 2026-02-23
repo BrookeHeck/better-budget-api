@@ -26,7 +26,8 @@ components:
             - SAVING
             - LOAN
             - CREDIT
-        user:
-          type: object
-          allOf:
-            - $ref: './../user/user-components.yml#/components/schemas/User'
+        userId:
+          type: integer
+          format: int64
+          example: 30
+          description: User id of the account owner
