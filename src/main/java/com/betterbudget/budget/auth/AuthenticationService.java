@@ -12,6 +12,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -21,10 +26,11 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserMapper userMapper;
 
-    public LoginResponse authenticate(String email, String password) {
+    public LoginResponse authenticate(String header) {
+        Map<Integer, String> emailPassword = decodeBasicAuthHeader(header);
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                email, password));
-        UserEntity user = userRepo.findByEmail(email)
+                emailPassword.get(1), emailPassword.get(2)));
+        UserEntity user = userRepo.findByEmail(emailPassword.get(1))
                 .orElseThrow(() -> new UsernameNotFoundException("manager not found"));
         String jwt = jwtService.generateToken(user);
         LoginResponse res = new LoginResponse();
@@ -35,9 +41,23 @@ public class AuthenticationService {
 
     public User register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setStatus(User.StatusEnum.ACTIVE);
         UserEntity userEntity = userRepo.save(userMapper.apiModelToEntity(user));
         String jwt = jwtService.generateToken(userEntity);
         return userMapper.entityToApiModel(userEntity);
+    }
+
+    public Map<Integer, String> decodeBasicAuthHeader(String header) {
+        String base64Credentials = header.substring(6);
+        byte[] decodedBytes = Base64.getDecoder().decode(base64Credentials);
+        String credentials = new String(decodedBytes, StandardCharsets.UTF_8);
+        final String[] values = credentials.split(":", 2);
+        String email = values[0];
+        String password = values[1];
+        Map<Integer, String> emailPassword = new HashMap<>();
+        emailPassword.put(1, email);
+        emailPassword.put(2, password);
+        return emailPassword;
     }
 
 }

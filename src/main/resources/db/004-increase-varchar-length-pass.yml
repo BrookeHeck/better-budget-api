@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004
+      author: brooke.heck
+      changes:
+        - modifyDataType:
+            tableName: bb_user
+            columnName: password
+            newDataType: varchar(100)

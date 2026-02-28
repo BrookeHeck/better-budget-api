@@ -182,7 +182,6 @@
 								<requestMappingMode>api_interface</requestMappingMode>
 								<serializableMode>true</serializableMode>
 								<sourceFolder>openapi</sourceFolder>
-								<interfaceOnly>true</interfaceOnly>
 								<java8>false</java8>
 								<dateLibrary>java8</dateLibrary>
 								<performBeanValidation>true</performBeanValidation>
@@ -191,6 +190,9 @@
 								<containerDefaultToNull>true</containerDefaultToNull>
 								<skipDefaultInterface>true</skipDefaultInterface>
 								<useDefaultInterface>false</useDefaultInterface>
+								<useSpringBoot4>true</useSpringBoot4>
+								<useJakartaEe>true</useJakartaEe>
+								<useSpringController>true</useSpringController>
 							</configOptions>
 						</configuration>
 					</execution>

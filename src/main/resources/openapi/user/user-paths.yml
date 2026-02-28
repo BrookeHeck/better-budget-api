@@ -4,8 +4,13 @@ paths:
       operationId: login
       tags:
         - user
-      security:
-        - basicAuth: [ ]
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            example: Basic dXNlcjpwYXNzd29yZA==
       responses:
         '201':
           description: Login successful

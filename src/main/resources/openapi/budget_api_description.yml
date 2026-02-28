@@ -35,9 +35,3 @@ paths:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item~1{transactionId}'
   /transaction-item/{transactionItemId}:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item~1{transactionItemId}'
-
-components:
-  securitySchemes:
-    basicAuth:
-      type: http
-      scheme: basic
