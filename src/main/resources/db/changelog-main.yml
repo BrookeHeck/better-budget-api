@@ -11,3 +11,6 @@ databaseChangeLog:
   - include:
       file: 004-increase-varchar-length-pass.yml
       relativeToChangelogFile: true
+  - include:
+      file: 005-generated-ids.yml
+      relativeToChangelogFile: true

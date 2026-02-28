@@ -21,7 +21,7 @@ public class UserController implements UserApi {
     @Override
     @PostMapping("/user/login")
     public ResponseEntity<LoginResponse> login(String authorization) {
-        return new ResponseEntity<LoginResponse>(authService.authenticate("test"), HttpStatus.OK);
+        return new ResponseEntity<LoginResponse>(authService.authenticate(authorization), HttpStatus.OK);
     }
 
     @Override

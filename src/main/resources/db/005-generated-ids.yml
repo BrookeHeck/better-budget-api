@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005
+      author: brooke.heck
+      changes:
+        - createSequence:
+              sequenceName: id_sequence
+              startValue: 1
+              incrementBy: 1
+        - addDefaultValue:
+            tableName: bb_user
+            columnName: id
+            defaultValueComputed: "nextval('id_sequence')"
+        - addDefaultValue:
+            tableName: account
+            columnName: id
+            defaultValueComputed: "nextval('id_sequence')"
+        - addDefaultValue:
+            tableName: transaction_item
+            columnName: id
+            defaultValueComputed: "nextval('id_sequence')"
+        - addDefaultValue:
+            tableName: transaction
+            columnName: id
+            defaultValueComputed: "nextval('id_sequence')"
