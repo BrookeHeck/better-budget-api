@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.openapitools.model.Account;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +18,7 @@ public class AccountDto {
     private Long accountId;
     private String name;
     private Double balance;
-    private String type;
+    private Account.AccountTypeEnum type;
     private UserDto user;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

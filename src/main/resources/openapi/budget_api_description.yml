@@ -13,8 +13,8 @@ servers:
 tags:
   - name: user, transaction, account, transaction_item, subscription
 paths:
-  /account/{userId}:
-    $ref: 'account/account-paths.yml#/paths/~1account~1{userId}'
+  /account/user/{userId}:
+    $ref: 'account/account-paths.yml#/paths/~1account~1user~1{userId}'
   /account/{accountId}:
     $ref: 'account/account-paths.yml#/paths/~1account~1{accountId}'
   /account:

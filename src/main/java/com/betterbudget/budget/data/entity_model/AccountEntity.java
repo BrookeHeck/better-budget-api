@@ -2,6 +2,8 @@ package com.betterbudget.budget.data.entity_model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.openapitools.model.Account;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +33,8 @@ public class AccountEntity {
 
     private Double balance;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private Account.AccountTypeEnum type;
 
     @ManyToOne
     private UserEntity user;
