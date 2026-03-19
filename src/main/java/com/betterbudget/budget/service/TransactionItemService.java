@@ -16,7 +16,8 @@ public class TransactionItemService {
     private final TransactionItemMapper transactionItemMapper;
 
     public TransactionItem createTransactionItem(TransactionItem transactionItem) {
-        return transactionItemMapper.entityModelToApiModel(transactionItemMapper.apiModelToEntity(transactionItem));
+        return transactionItemMapper.entityModelToApiModel(
+                transactionItemRepo.save(transactionItemMapper.apiModelToEntity(transactionItem)));
     }
 
     public void deleteTransactionItemById(long transactionItemId) {
@@ -24,7 +25,9 @@ public class TransactionItemService {
     }
 
     public TransactionItem updateTransactionItem(TransactionItem transactionItem) {
-        return transactionItemMapper.entityModelToApiModel(transactionItemMapper.apiModelToEntity(transactionItem));
+        return transactionItemMapper.entityModelToApiModel(
+                transactionItemRepo.save(transactionItemMapper.apiModelToEntity(transactionItem))
+        );
     }
 
     public List<TransactionItem> getTransactionItemsByTransactionId(long transactionId) {
