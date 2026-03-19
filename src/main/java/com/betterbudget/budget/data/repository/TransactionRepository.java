@@ -11,11 +11,11 @@ import java.util.List;
 public interface TransactionRepository extends JpaRepository<TransactionEntity, Long> {
     @Query("""
         select t from TransactionEntity t
-            where t.user.userId = :USER_ID
-            and (t.dateOfTransaction > :START_DATE and t.dateOfTransaction < :END_DATE)
+            where t.user.userId = :userId
+            and (t.dateOfTransaction between :startDate and :endDate)
     """)
     List<TransactionEntity> findAllByUserId(
-            @Param("USER_ID") Long userId,
-            @Param("START_DATE") LocalDate startDate,
-            @Param("END_DATE") LocalDate endDate);
+            @Param("userId") Long userId,
+            @Param("startDate") LocalDate startDate,
+            @Param("endDate") LocalDate endDate);
 }

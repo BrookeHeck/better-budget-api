@@ -7,11 +7,13 @@ import org.openapitools.api.TransactionItemApi;
 import org.openapitools.model.TransactionItem;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class TransactionItemController implements TransactionItemApi {
     private final TransactionItemService transactionItemService;
