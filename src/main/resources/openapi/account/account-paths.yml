@@ -94,3 +94,21 @@ paths:
             application/json:
               schema:
                 $ref: './accounts-components.yml#/components/schemas/Account'
+  /account/transfer:
+    post:
+      operationId: transfer
+      tags:
+        - account
+      description: Transfer money from one account to another
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: './accounts-components.yml#/components/schemas/Account'
+      responses:
+        '200':
+          description: Created transaction from transfer
+          content:
+            application/json:
+              schema:
+                $ref: '../transaction/transaction-components.yml#/components/schemas/Transaction'
