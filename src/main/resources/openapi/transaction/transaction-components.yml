@@ -1,36 +1,60 @@
 components:
   schemas:
     Transaction:
+      description: transaction details
+      required:
+        - transactionType
+        - category
+        - amount
+        - dateOfTransaction
+        - accountId
+        - userId
       properties:
         transactionId:
           type: integer
           format: int64
           example: 244
           description: Transaction identifier
+        transactionType:
+          type: string
+          example: DEPOSIT
+          description: The type of transaction
+          nullable: false
+          enum:
+            - PAYMENT
+            - TRANSFER
+            - DEPOSIT
+            - LOAN_PAYMENT
         category:
           type: string
           example: "Automotive"
           description: Transaction category
+          nullable: false
         amount:
           type: number
           format: double
           example: 100.00
           description: Transaction amount
+          nullable: false
         description:
           type: string
           example: "New tires and brakes"
           description: Transaction description
+          nullable: true
         dateOfTransaction:
           type: string
           format: date
           example: "2020-01-01"
+          nullable: false
         accountId:
-          type: number
+          type: integer
           format: int64q
           description: Account id associated with the transaction
           example: 62
+          nullable: false
         userId:
-          type: number
+          type: integer
           format: int64
           description: User id associated with the transaction
           example: 5
+          nullable: false

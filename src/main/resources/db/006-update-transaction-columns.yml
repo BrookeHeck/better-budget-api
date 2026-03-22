@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006
+      author: brooke.heck
+      changes:
+        - addColumn:
+            tableName: transaction
+            columns:
+              - column:
+                  name: transaction_type
+                  type: varchar(25)
+                  constraints:
+                    nullable: false
+        - modifyDataType:
+            tableName: transaction
+            columnName: date_of_transaction
+            newDataType: datetime
+        - addNotNullConstraint:
+              tableName: transaction
+              columnName: date_of_transaction
+        - addNotNullConstraint:
+            tableName: transaction
+            columnName: account_id
+        - addNotNullConstraint:
+            tableName: transaction
+            columnName: user_id
+        - addNotNullConstraint:
+            tableName: transaction
+            columnName: category

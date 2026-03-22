@@ -34,5 +34,9 @@ public class AccountService {
         return accountMapper.entityToApiModel(accountRepo.save(accountMapper.apiModelToEntity(account)));
     }
 
-
+    public Account updateAccountBalance(long accountId, double amount) {
+        Account account = getAccountById(accountId);
+        account.setBalance(account.getBalance() + amount);
+        return updateAccount(account);
+    }
 }

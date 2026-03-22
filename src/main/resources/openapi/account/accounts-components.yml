@@ -3,6 +3,11 @@ components:
     Account:
       type: object
       description: bank, loan, or credit account details
+      required:
+        - name
+        - balance
+        - accountType
+        - userId
       properties:
         accountId:
           type: integer
@@ -13,14 +18,17 @@ components:
           type: string
           description: Name of the account
           example: Savings Account
+          nullable: false
         balance:
           type: number
           format: double
           example: 100.49
+          nullable: false
         accountType:
           type: string
           example: SAVING
           description: The type of account
+          nullable: false
           enum:
             - CHECKING
             - SAVING
@@ -31,21 +39,4 @@ components:
           format: int64
           example: 30
           description: User id of the account owner
-    AccountTransfer:
-      type: object
-      description: details for transfering money from one account to another
-      properties:
-        from:
-          type: integer
-          format: int64
-          example: 123
-          description: account id to transfer money from
-        to:
-          type: integer
-          format: int64
-          example: 123
-          description: account id to transfer money from
-        amount:
-          type: number
-          format: double
-          example: 25.30
+          nullable: false

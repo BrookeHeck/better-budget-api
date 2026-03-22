@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.openapitools.api.AccountApi;
 import org.openapitools.model.Account;
-import org.openapitools.model.Transaction;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,15 +48,8 @@ public class AccountController implements AccountApi {
     }
 
     @Override
-    public ResponseEntity<Transaction> transfer(@Nullable Account account) {
-        return null;
-    }
-
-    @Override
     @PutMapping("/account")
     public ResponseEntity<Account> updateAccount(@Nullable Account account) {
         return new ResponseEntity<>(accountService.updateAccount(account), HttpStatus.OK);
     }
-
-
 }

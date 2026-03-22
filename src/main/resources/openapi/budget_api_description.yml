@@ -19,8 +19,6 @@ paths:
     $ref: 'account/account-paths.yml#/paths/~1account~1{accountId}'
   /account:
     $ref: 'account/account-paths.yml#/paths/~1account'
-  /account/transfer:
-    $ref: 'account/account-paths.yml#/paths/~1account~1transfer'
   /login:
     $ref: 'user/user-paths.yml#/paths/~1login'
   /register:

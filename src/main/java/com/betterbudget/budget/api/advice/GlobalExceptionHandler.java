@@ -28,4 +28,10 @@ public class GlobalExceptionHandler {
         log.error(ex.getMessage(), ex);
         return buildErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred");
     }
+
+    @ExceptionHandler(BetterBudgetApiException.class)
+    public ResponseEntity<Map<String, Object>> handleBetterBudgetApiException(BetterBudgetApiException e) {
+        log.error(e.getMessage(), e);
+        return buildErrorResponse(e.getStatus(), e.getMessage());
+    }
 }

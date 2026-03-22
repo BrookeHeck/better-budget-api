@@ -7,11 +7,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.openapitools.model.Transaction;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,6 +23,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@Accessors(chain = true)
 @NoArgsConstructor
 @Table(name = "transaction")
 public class TransactionEntity {
@@ -33,6 +38,8 @@ public class TransactionEntity {
 
     private String description;
 
+    private Transaction.TransactionTypeEnum transactionType;
+
     @ManyToOne
     private AccountEntity account;
 
@@ -45,5 +52,5 @@ public class TransactionEntity {
     @UpdateTimestamp
     LocalDateTime updatedAt;
 
-    LocalDate dateOfTransaction;
+    LocalDateTime dateOfTransaction;
 }

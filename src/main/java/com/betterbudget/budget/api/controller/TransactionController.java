@@ -26,7 +26,7 @@ public class TransactionController implements TransactionApi {
     @Override
     @PostMapping("/transaction")
     public ResponseEntity<Transaction> createTransaction(@Nullable Transaction transaction) {
-        return new ResponseEntity<>(transactionService.createTransaction(transaction), HttpStatus.CREATED);
+        return new ResponseEntity<>(transactionService.createPaymentOrDepositTransaction(transaction), HttpStatus.CREATED);
     }
 
     @Override
