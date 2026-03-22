@@ -43,6 +43,7 @@ paths:
         - transaction
       description: Create a transaction
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -60,6 +61,7 @@ paths:
         - transaction
       description: Update transaction
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -108,3 +110,22 @@ paths:
                 type: array
                 items:
                   $ref: './transaction-components.yml#/components/schemas/Transaction'
+  /transaction/transfer:
+    post:
+      operationId: transactionTransfer
+      tags:
+        - transaction
+      description: Transfer money between internal accounts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './transaction-components.yml#/components/schemas/TransactionTransfer'
+      responses:
+        '201':
+          description: Successfully transferred
+          content:
+            application/json:
+              schema:
+                $ref: './transaction-components.yml#/components/schemas/TransactionTransfer'

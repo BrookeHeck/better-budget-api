@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.jspecify.annotations.Nullable;
 import org.openapitools.api.TransactionApi;
 import org.openapitools.model.Transaction;
+import org.openapitools.model.TransactionTransfer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -53,10 +54,15 @@ public class TransactionController implements TransactionApi {
                 HttpStatus.OK);
     }
 
-
     @Override
     @PutMapping("/transaction")
     public ResponseEntity<Transaction> updateTransaction(@Nullable Transaction transaction) {
         return new ResponseEntity<>(transactionService.updateTransaction(transaction), HttpStatus.OK);
+    }
+
+    @Override
+    @PostMapping("/transaction/transfer")
+    public ResponseEntity<TransactionTransfer> transactionTransfer(TransactionTransfer transactionTransfer) {
+        return new ResponseEntity<>(transactionService.createTransferTransaction(transactionTransfer), HttpStatus.CREATED);
     }
 }

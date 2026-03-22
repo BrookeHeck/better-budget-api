@@ -29,6 +29,8 @@ paths:
     $ref: 'transaction/transaction-paths.yml#/paths/~1transaction'
   /transaction/{userId}:
     $ref: 'transaction/transaction-paths.yml#/paths/~1transaction~1{userId}'
+  /transaction/transfer:
+    $ref: 'transaction/transaction-paths.yml#/paths/~1transaction~1transfer'
   /transaction-item:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item'
   /transaction-item/{transactionId}:

@@ -5,6 +5,7 @@ import com.betterbudget.budget.data.repository.TransactionRepository;
 import com.betterbudget.budget.mapper.TransactionMapper;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.model.Transaction;
+import org.openapitools.model.TransactionTransfer;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -46,12 +47,21 @@ public class TransactionService {
         if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.DEPOSIT) {
             throw new BetterBudgetApiException("Deposit transaction must have positive amount.", HttpStatus.BAD_REQUEST);
         }
-        Transaction createdTransaction = createTransaction(transaction);
         accountService.updateAccountBalance(transaction.getAccountId(), transaction.getAmount());
-        return createdTransaction;
+        return createTransaction(transaction);
     }
 
-    public Transaction createTransferTransaction() {
-        return null;
+    public TransactionTransfer createTransferTransaction(TransactionTransfer transfer) {
+        if(transfer.getTo().getAmount() <= 0) {
+            throw new BetterBudgetApiException("Transfer to amount must be positive amount.", HttpStatus.BAD_REQUEST);
+        }
+        if(transfer.getFrom().getAmount() >=0) {
+            throw new BetterBudgetApiException("Transfer from amount must be negative amount.", HttpStatus.BAD_REQUEST);
+        }
+        accountService.updateAccountBalance(transfer.getTo().getAccountId(), transfer.getTo().getAmount());
+        Transaction to = createTransaction(transfer.getTo());
+        accountService.updateAccountBalance(transfer.getFrom().getAccountId(), transfer.getFrom().getAmount());
+        Transaction from = createTransaction(transfer.getFrom());
+        return new TransactionTransfer(to, from);
     }
 }

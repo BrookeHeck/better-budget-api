@@ -58,3 +58,13 @@ components:
           description: User id associated with the transaction
           example: 5
           nullable: false
+    TransactionTransfer:
+      type: object
+      required:
+        - to
+        - from
+      properties:
+        to:
+          $ref: '#/components/schemas/Transaction'
+        from:
+          $ref: '#/components/schemas/Transaction'
