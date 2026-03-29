@@ -11,7 +11,7 @@
 	<groupId>com.betterbudget</groupId>
 	<artifactId>budget</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>budget</name>
+	<name>better-budget-api</name>
 	<description>Budgeting app</description>
 	<url/>
 	<licenses>
