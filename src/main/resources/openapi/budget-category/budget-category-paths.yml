@@ -1,0 +1,24 @@
+paths:
+  /budget-category/{userId}:
+    get:
+      operationId: getBudgetCategoriesByUserId
+      tags:
+        - budget_category
+      description: Get budget categories by user id
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: Id of user
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved budget categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'

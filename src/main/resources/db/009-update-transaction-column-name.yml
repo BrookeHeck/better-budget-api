@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 009
+      author: brooke.heck
+      changes:
+        - renameColumn:
+            newColumnName: budget_category_id
+            oldColumnName: category
+            tableName: transaction

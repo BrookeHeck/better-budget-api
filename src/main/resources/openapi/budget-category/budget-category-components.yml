@@ -1,0 +1,35 @@
+components:
+  schemas:
+    BudgetCategory:
+      description: budget category for user
+      required:
+        - name
+        - budget
+        - active
+        - userId
+      properties:
+        budgetCategoryId:
+          type: integer
+          format: int64
+          example: 12
+          description: budget category identifier
+        name:
+          type: string
+          example: grocery
+          description: name of budget category
+          nullable: false
+        budget:
+          type: number
+          format: double
+          example: 100.00
+          description: budgeted amount
+          nullable: false
+        active:
+          type: boolean
+          example: true
+          nullable: false
+        userId:
+          type: integer
+          format: int64
+          example: 2
+          description: user owning budget category

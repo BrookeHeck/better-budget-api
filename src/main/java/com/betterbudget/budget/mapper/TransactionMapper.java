@@ -18,18 +18,22 @@ public interface TransactionMapper {
 
     @Mapping(target = "user.userId", source = "userId")
     @Mapping(target = "account.accountId", source = "accountId")
+    @Mapping(target = "category.budgetCategoryId", source = "categoryId")
     TransactionDto apiModelToDto(Transaction transaction);
 
     @Mapping(target = "userId", source = "user.userId")
     @Mapping(target = "accountId", source = "account.accountId")
+    @Mapping(target = "categoryId", source = "category.budgetCategoryId")
     Transaction dtoToApiModel(TransactionDto transactionDto);
 
     @Mapping(target = "user.userId", source = "userId")
     @Mapping(target = "account.accountId", source = "accountId")
+    @Mapping(target = "category.budgetCategoryId", source = "categoryId")
     TransactionEntity apiModelToEntity(Transaction transaction);
 
     @Mapping(target = "userId", source = "user.userId")
     @Mapping(target = "accountId", source = "account.accountId")
+    @Mapping(target = "categoryId", source = "category.budgetCategoryId")
     Transaction entityToApiModel(TransactionEntity transactionEntity);
 
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)

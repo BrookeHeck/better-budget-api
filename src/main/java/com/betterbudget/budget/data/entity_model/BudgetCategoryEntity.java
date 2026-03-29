@@ -1,5 +1,6 @@
 package com.betterbudget.budget.data.entity_model;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,27 +14,24 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "recurring_payment")
-public class RecurringPaymentEntity {
+@Table(name = "budget_category")
+public class BudgetCategoryEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long recurringPaymentId;
-
-    private String paymentInterval;
+    private long budgetCategoryId;
 
     private String name;
 
-    private LocalDate nextPaymentDate;
+    private Double budget;
 
-    private boolean notifications;
+    private boolean active;
 
     @ManyToOne
     private UserEntity user;

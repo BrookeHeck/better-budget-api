@@ -37,3 +37,5 @@ paths:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item~1{transactionId}'
   /transaction-item/{transactionItemId}:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item~1{transactionItemId}'
+  /budget-category/{userId}:
+    $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category~1{userId}'

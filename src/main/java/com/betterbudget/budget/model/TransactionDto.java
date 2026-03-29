@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 public class TransactionDto {
     private Long transactionId;
-    private String category;
+    private BudgetCategoryDto category;
     private Double amount;
     private String description;
     private AccountDto account;

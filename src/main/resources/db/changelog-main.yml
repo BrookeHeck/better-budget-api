@@ -17,3 +17,9 @@ databaseChangeLog:
   - include:
       file: 007-add-cascade-deletes.yml
       relativeToChangelogFile: true
+  - include:
+      file: 008-add-envelope-recurring-payment-tables.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 009-update-transaction-column-name.yml
+      relativeToChangelogFile: true

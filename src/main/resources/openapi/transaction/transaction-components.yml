@@ -4,7 +4,7 @@ components:
       description: transaction details
       required:
         - transactionType
-        - category
+        - categoryId
         - amount
         - dateOfTransaction
         - accountId
@@ -25,11 +25,11 @@ components:
             - TRANSFER
             - DEPOSIT
             - LOAN_PAYMENT
-        category:
-          type: string
-          example: "Automotive"
-          description: Transaction category
-          nullable: false
+        categoryId:
+          type: integer
+          format: int64
+          example: 36
+          description: budget category that transaction belongs in
         amount:
           type: number
           format: double
