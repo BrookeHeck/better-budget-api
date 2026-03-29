@@ -6,9 +6,6 @@ databaseChangeLog:
       file: 002-add-creation-update-date-columns.yml
       relativeToChangelogFile: true
   - include:
-      file: 003-add-test-user.yml
-      relativeToChangelogFile: true
-  - include:
       file: 004-increase-varchar-length-pass.yml
       relativeToChangelogFile: true
   - include:
@@ -16,4 +13,7 @@ databaseChangeLog:
       relativeToChangelogFile: true
   - include:
       file: 006-update-transaction-columns.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 007-add-cascade-deletes.yml
       relativeToChangelogFile: true

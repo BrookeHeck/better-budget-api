@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -36,15 +38,16 @@ public class TransactionService {
     }
 
     public List<Transaction> getTransactionsByUserId(long transactionId, LocalDate startDate, LocalDate endDate) {
-        return transactionMapper
-                .entityListToApiModelList(transactionRepo.findAllByUserId(transactionId, startDate, endDate));
+        LocalDate end = endDate.plusDays(1);
+        return transactionMapper.entityListToApiModelList(
+                transactionRepo.findAllByUserId(transactionId, startDate.atStartOfDay(), end.atStartOfDay()));
     }
 
     public Transaction createPaymentOrDepositTransaction(Transaction transaction) {
         if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.PAYMENT && transaction.getAmount() >= 0) {
             throw new BetterBudgetApiException("Payment transaction must have negative amount.", HttpStatus.BAD_REQUEST);
         }
-        if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.DEPOSIT) {
+        if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.DEPOSIT && transaction.getAmount() <= 0) {
             throw new BetterBudgetApiException("Deposit transaction must have positive amount.", HttpStatus.BAD_REQUEST);
         }
         accountService.updateAccountBalance(transaction.getAccountId(), transaction.getAmount());
