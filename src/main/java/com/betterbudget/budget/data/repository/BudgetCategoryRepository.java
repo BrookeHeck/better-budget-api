@@ -10,11 +10,14 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BudgetCategoryRepository extends JpaRepository<BudgetCategoryEntity, Long> {
-    List<BudgetCategoryEntity> findBudgetCategoryEntitiesByUser(UserEntity user);
+    @Query("""
+        select b from BudgetCategoryEntity b where b.user.userId=:user_id
+        """)
+    List<BudgetCategoryEntity> findBudgetCategoryEntitiesByUserId(@Param("user_id") long userId);
 
     @Modifying
     @Query("""
-        update BudgetCategoryEntity e set e.active = :status where e.budgetCategoryId = :id
+        update BudgetCategoryEntity b set b.active = :status where b.budgetCategoryId = :id
         """)
     void updateBudgetCategoryStatus(@Param("id") long categoryId, @Param("status") boolean status);
 }

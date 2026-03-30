@@ -19,9 +19,8 @@ public class BudgetCategoryService {
         return mapper.entityToApiModel(budgetCategoryRepo.save(mapper.apiModelToEntity(budgetCategory)));
     }
 
-    public List<BudgetCategory> getBudgetCategoriesByUser(BudgetCategory budgetCategory) {
-        BudgetCategoryEntity entity = mapper.apiModelToEntity(budgetCategory);
-        return mapper.entityListToApiModelList(budgetCategoryRepo.findBudgetCategoryEntitiesByUser(entity.getUser()));
+    public List<BudgetCategory> getBudgetCategoriesByUser(long budgetCategoryId) {
+        return mapper.entityListToApiModelList(budgetCategoryRepo.findBudgetCategoryEntitiesByUserId(budgetCategoryId));
     }
 
     public void updateBudgetCategoryStatus(long budgetCategoryId, boolean status) {
