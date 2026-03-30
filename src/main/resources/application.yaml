@@ -3,8 +3,8 @@ spring:
     name: budget
   datasource:
     url: jdbc:postgresql://localhost:5432/better_budget
-    username: bheck
-    password: testing_testing
+    username: ${DB_USER}
+    password: ${DB_PASS}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
