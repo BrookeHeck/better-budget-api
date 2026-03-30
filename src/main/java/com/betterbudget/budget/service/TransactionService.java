@@ -1,6 +1,7 @@
 package com.betterbudget.budget.service;
 
 import com.betterbudget.budget.api.advice.BetterBudgetApiException;
+import com.betterbudget.budget.data.entity_model.TransactionEntity;
 import com.betterbudget.budget.data.repository.TransactionRepository;
 import com.betterbudget.budget.mapper.TransactionMapper;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,8 @@ public class TransactionService {
     private final AccountService accountService;
 
     public Transaction createTransaction(Transaction transaction) {
-        return transactionMapper.entityToApiModel(transactionRepo.save(transactionMapper.apiModelToEntity(transaction)));
+        TransactionEntity transactionEntity = transactionMapper.apiModelToEntity(transaction);
+        return transactionMapper.entityToApiModel(transactionRepo.save(transactionEntity));
     }
 
     public Transaction updateTransaction(Transaction transaction) {
@@ -44,7 +46,7 @@ public class TransactionService {
     }
 
     public Transaction createPaymentOrDepositTransaction(Transaction transaction) {
-        if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.PAYMENT && transaction.getAmount() >= 0) {
+        if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.EXPENSE && transaction.getAmount() >= 0) {
             throw new BetterBudgetApiException("Payment transaction must have negative amount.", HttpStatus.BAD_REQUEST);
         }
         if(transaction.getTransactionType() == Transaction.TransactionTypeEnum.DEPOSIT && transaction.getAmount() <= 0) {

@@ -21,7 +21,7 @@ components:
           description: The type of transaction
           nullable: false
           enum:
-            - PAYMENT
+            - EXPENSE
             - TRANSFER
             - DEPOSIT
             - LOAN_PAYMENT

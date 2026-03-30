@@ -58,25 +58,16 @@ paths:
             application/json:
               schema:
                 $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
-  /budget-category/{budgetCategoryId}/{status}:
     patch:
       operationId: updateBudgetCategoryStatus
       tags:
         - budget_category
-      parameters:
-        - name: budgetCategoryId
-          in: path
-          required: true
-          description: budget category id to update status
-          schema:
-            type: integer
-            format: int64
-        - name: status
-          in: path
-          required: true
-          description: Status to set budget category to
-          schema:
-            type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './budget-category-components.yml#/components/schemas/StatusUpdatePatch'
       responses:
         '200':
           description: Successfully updated budget category status

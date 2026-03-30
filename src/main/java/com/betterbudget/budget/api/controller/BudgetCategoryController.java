@@ -5,6 +5,7 @@ import com.betterbudget.budget.service.BudgetCategoryService;
 import lombok.RequiredArgsConstructor;
 import org.openapitools.api.BudgetCategoryApi;
 import org.openapitools.model.BudgetCategory;
+import org.openapitools.model.StatusUpdatePatch;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,9 +48,12 @@ public class BudgetCategoryController implements BudgetCategoryApi {
     }
 
     @Override
-    @PatchMapping("/budget-category/{budgetCategoryId}/{status}")
-    public ResponseEntity<Void> updateBudgetCategoryStatus(Long budgetCategoryId, Boolean status) {
-        budgetCategoryService.updateBudgetCategoryStatus(budgetCategoryId, status);
+    @PatchMapping("/budget-category")
+    public ResponseEntity<Void> updateBudgetCategoryStatus(StatusUpdatePatch statusUpdatePatch) {
+        budgetCategoryService.updateBudgetCategoryStatus(
+                statusUpdatePatch.getBudgetCategoryId(), statusUpdatePatch.getStatus());
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }

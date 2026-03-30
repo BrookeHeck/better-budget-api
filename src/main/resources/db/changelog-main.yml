@@ -26,4 +26,13 @@ databaseChangeLog:
   - include:
       file: 010-add-amount-column-recurring-payment.yml
       relativeToChangelogFile: true
+  - include:
+      file: 011-modify-budget-cateogory-fk.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 012-update-transaction-category-fk.yml
+      relativeToChangelogFile: true
+  - include:
+      file: 013-drop-null-constraint.yml
+      relativeToChangelogFile: true
 

@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 011
+      author: brooke.heck
+      changes:
+        - modifyDataType:
+            tableName: transaction
+            columnName: budget_category_id
+            newDataType: bigint

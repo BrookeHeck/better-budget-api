@@ -1,10 +1,11 @@
 databaseChangeLog:
-  author: brooke.heck
-  id: 010
-  changes:
-    - addColumn:
-        tableName: recurring_payment
-        columns:
-          - column:
-              name: payment_amount
-              type: double
+  - changeSet:
+      id: 009
+      author: brooke.heck
+      changes:
+      - addColumn:
+          tableName: recurring_payment
+          columns:
+            - column:
+                name: payment_amount
+                type: double

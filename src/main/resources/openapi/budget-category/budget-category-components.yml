@@ -6,6 +6,7 @@ components:
         - name
         - budget
         - active
+        - status
         - userId
       properties:
         budgetCategoryId:
@@ -33,3 +34,17 @@ components:
           format: int64
           example: 2
           description: user owning budget category
+    StatusUpdatePatch:
+      required:
+        - budgetCategoryId
+        - status
+      properties:
+        budgetCategoryId:
+          type: integer
+          format: int64
+          example: 12
+          description: budget category identifier
+        status:
+          type: boolean
+          example: false
+          nullable: false
