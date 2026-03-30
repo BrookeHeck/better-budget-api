@@ -22,3 +22,61 @@ paths:
                 type: array
                 items:
                   $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
+  /budget-category:
+    post:
+      operationId: createBudgetCategory
+      tags:
+        - budget_category
+      description: Create budget category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
+      responses:
+        '201':
+          description: Successfully created budget category
+          content:
+            application/json:
+              schema:
+                $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
+    put:
+      operationId: updateBudgetCategory
+      tags:
+        - budget_category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
+      responses:
+        '200':
+          description: Successfully update budget category
+          content:
+            application/json:
+              schema:
+                $ref: './budget-category-components.yml#/components/schemas/BudgetCategory'
+  /budget-category/{budgetCategoryId}/{status}:
+    patch:
+      operationId: updateBudgetCategoryStatus
+      tags:
+        - budget_category
+      parameters:
+        - name: budgetCategoryId
+          in: path
+          required: true
+          description: budget category id to update status
+          schema:
+            type: integer
+            format: int64
+        - name: status
+          in: path
+          required: true
+          description: Status to set budget category to
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Successfully updated budget category status

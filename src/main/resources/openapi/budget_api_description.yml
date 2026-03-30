@@ -11,7 +11,7 @@ servers:
   - url: https://testenvironment.org/api/v1
   - url: https://prodenvironment.org/api/v1
 tags:
-  - name: user, transaction, account, transaction_item, subscription
+  - name: user, transaction, account, transaction_item, budget_category, recurring_payments
 paths:
   /account/user/{userId}:
     $ref: 'account/account-paths.yml#/paths/~1account~1user~1{userId}'
@@ -39,3 +39,7 @@ paths:
     $ref: 'transaction-item/transaction-items-paths.yml#/paths/~1transaction-item~1{transactionItemId}'
   /budget-category/{userId}:
     $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category~1{userId}'
+  /budget-category:
+    $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category'
+  /budget-category/{budgetCategoryId}/{status}:
+    $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category~1{budgetCategoryId}~1{status}'
