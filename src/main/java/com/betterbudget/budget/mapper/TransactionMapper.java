@@ -1,11 +1,15 @@
 package com.betterbudget.budget.mapper;
 
+import com.betterbudget.budget.data.entity_model.BudgetCategoryEntity;
 import com.betterbudget.budget.data.entity_model.TransactionEntity;
 import com.betterbudget.budget.model.TransactionDto;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
+import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValueMappingStrategy;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.openapitools.model.Transaction;
 
 import java.util.List;
@@ -28,7 +32,7 @@ public interface TransactionMapper {
 
     @Mapping(target = "user.userId", source = "userId")
     @Mapping(target = "account.accountId", source = "accountId")
-    @Mapping(target = "category.budgetCategoryId", source = "categoryId")
+    @Mapping(source = "categoryId", target = "category", qualifiedByName = "transactionBudgetCategory")
     TransactionEntity apiModelToEntity(Transaction transaction);
 
     @Mapping(target = "userId", source = "user.userId")
@@ -38,4 +42,14 @@ public interface TransactionMapper {
 
     @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
     List<Transaction> entityListToApiModelList(List<TransactionEntity> transactions);
+
+    @Named("transactionBudgetCategory")
+    default BudgetCategoryEntity transactionToBudgetCategory(Long categoryId) {
+        if ( categoryId == null ) {
+            return null;
+        }
+        BudgetCategoryEntity budgetCategoryEntity = new BudgetCategoryEntity();
+        budgetCategoryEntity.setBudgetCategoryId( categoryId );
+        return budgetCategoryEntity;
+    }
 }

@@ -4,7 +4,6 @@ components:
       description: transaction details
       required:
         - transactionType
-        - categoryId
         - amount
         - dateOfTransaction
         - accountId
@@ -30,6 +29,7 @@ components:
           format: int64
           example: 36
           description: budget category that transaction belongs in
+          nullable: true
         amount:
           type: number
           format: double
