@@ -23,3 +23,7 @@ databaseChangeLog:
   - include:
       file: 009-update-transaction-column-name.yml
       relativeToChangelogFile: true
+  - include:
+      file: 010-add-amount-column-recurring-payment.yml
+      relativeToChangelogFile: true
+

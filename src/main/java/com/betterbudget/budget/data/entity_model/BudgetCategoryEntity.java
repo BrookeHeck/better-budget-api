@@ -25,13 +25,13 @@ public class BudgetCategoryEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long budgetCategoryId;
+    private Long budgetCategoryId;
 
     private String name;
 
     private Double budget;
 
-    private boolean active;
+    private Boolean active;
 
     @ManyToOne
     private UserEntity user;

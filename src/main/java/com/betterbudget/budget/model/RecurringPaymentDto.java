@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.openapitools.model.RecurringPayment;
 
 import java.time.LocalDate;
 
@@ -16,11 +17,13 @@ import java.time.LocalDate;
 public class RecurringPaymentDto {
     private Long recurringPaymentId;
 
-    private String paymentInterval;
+    private RecurringPayment.PaymentIntervalEnum paymentInterval;
 
     private String name;
 
     private LocalDate nextPaymentDate;
+
+    private Double paymentAmount;
 
     private Boolean notifications;
 
