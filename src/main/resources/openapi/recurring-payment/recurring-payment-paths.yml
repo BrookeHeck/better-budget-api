@@ -1,0 +1,76 @@
+paths:
+  /recurring-payment/{userId}:
+    get:
+      operationId: getRecurringPaymentsByUserId
+      tags:
+        - recurring_payments
+      description: Get recurring payments by user id
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: Id of user
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully retrieved recurring payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './recurring-payment-components.yml#/components/schemas/RecurringPayment'
+  /recurring-payment:
+    post:
+      operationId: createRecurringPayment
+      tags:
+        - recurring_payments
+      description: Create recurring payment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './recurring-payment-components.yml#/components/schemas/RecurringPayment'
+      responses:
+        '201':
+          description: Successfully created recurring payment
+          content:
+            application/json:
+              schema:
+                $ref: './recurring-payment-components.yml#/components/schemas/RecurringPayment'
+    put:
+      operationId: updateRecurringPayment
+      tags:
+        - recurring_payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: './recurring-payment-components.yml#/components/schemas/RecurringPayment'
+      responses:
+        '200':
+          description: Successfully update recurring payment
+          content:
+            application/json:
+              schema:
+                $ref: './recurring-payment-components.yml#/components/schemas/RecurringPayment'
+  /recurring-payment/{recurringPaymentId}:
+    delete:
+      operationId: deleteRecurringPayment
+      tags:
+        - recurring_payments
+      parameters:
+        - name: recurringPaymentId
+          in: path
+          required: true
+          description: recurring payment id to delete
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successfully delete budget category

@@ -43,3 +43,9 @@ paths:
     $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category'
   /budget-category/{budgetCategoryId}/{status}:
     $ref: 'budget-category/budget-category-paths.yml#/paths/~1budget-category~1{budgetCategoryId}~1{status}'
+  /recurring-payment/{userId}:
+    $ref: 'recurring-payment/recurring-payment-paths.yml#/paths/~1recurring-payment~1{userId}'
+  /recurring-payment:
+    $ref: 'recurring-payment/recurring-payment-paths.yml#/paths/~1recurring-payment'
+  /recurring-payment/{recurringPaymentId}:
+    $ref: 'recurring-payment/recurring-payment-paths.yml#/paths/~1recurring-payment~1{recurringPaymentId}'

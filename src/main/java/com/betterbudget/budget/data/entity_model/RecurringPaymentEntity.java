@@ -25,7 +25,7 @@ public class RecurringPaymentEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long recurringPaymentId;
+    private Long recurringPaymentId;
 
     private String paymentInterval;
 
@@ -33,7 +33,7 @@ public class RecurringPaymentEntity {
 
     private LocalDate nextPaymentDate;
 
-    private boolean notifications;
+    private Boolean notifications;
 
     @ManyToOne
     private UserEntity user;

@@ -5,6 +5,7 @@ import com.betterbudget.budget.model.BudgetCategoryDto;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.NullValueMappingStrategy;
 import org.openapitools.model.BudgetCategory;
 
 import java.util.List;
@@ -27,6 +28,6 @@ public interface BudgetCategoryMapper {
     @Mapping(source = "userId", target = "user.userId")
     BudgetCategoryEntity apiModelToEntity(BudgetCategory apiModel);
 
-    @IterableMapping
+    @IterableMapping(nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL)
     List<BudgetCategory> entityListToApiModelList(List<BudgetCategoryEntity> entities);
 }
