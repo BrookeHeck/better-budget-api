@@ -13,6 +13,7 @@ public interface TransactionRepository extends JpaRepository<TransactionEntity, 
         select t from TransactionEntity t
             where t.user.userId = :userId
             and (t.dateOfTransaction between :startDate and :endDate)
+        order by t.dateOfTransaction desc
     """)
     List<TransactionEntity> findAllByUserId(
             @Param("userId") Long userId,

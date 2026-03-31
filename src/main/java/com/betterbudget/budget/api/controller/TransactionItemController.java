@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,8 +40,18 @@ public class TransactionItemController implements TransactionItemApi {
     @Override
     @GetMapping("/transaction-item/{transactionId}")
     public ResponseEntity<List<TransactionItem>> getTransactionItemsByTransactionId(Long transactionId) {
-        return new ResponseEntity<>(transactionItemService.getTransactionItemsByTransactionId(transactionId), HttpStatus.OK);
+        return new ResponseEntity<>(
+                transactionItemService.getTransactionItemsByTransactionId(transactionId), HttpStatus.OK);
     }
+
+    @Override
+    @GetMapping("/transaction-item/budget/{budgetCategoryId}")
+    public ResponseEntity<List<TransactionItem>> getTransactionItemsForBudgetCategory(Long budgetCategoryId, LocalDate date) {
+        return new ResponseEntity<>(
+                transactionItemService.getBudgetCategoryTransactionItems(budgetCategoryId, date), HttpStatus.OK
+        );
+    }
+
 
     @Override
     @PutMapping("/transaction-item")

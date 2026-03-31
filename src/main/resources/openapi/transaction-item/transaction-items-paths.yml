@@ -3,7 +3,7 @@ paths:
     post:
       operationId: createTransactionItem
       tags:
-        - transaction-item
+        - transaction_item
       requestBody:
         content:
           application/json:
@@ -19,7 +19,7 @@ paths:
     put:
       operationId: updateTransactionItem
       tags:
-        - transaction-item
+        - transaction_item
       description: Update transaction item
       requestBody:
         content:
@@ -37,7 +37,7 @@ paths:
     get:
       operationId: getTransactionItemsByTransactionId
       tags:
-        - transaction-item
+        - transaction_item
       description: Get transaction items by transaction id
       parameters:
         - name: transactionId
@@ -60,7 +60,7 @@ paths:
     delete:
       operationId: deleteTransactionItem
       tags:
-        - transaction-item
+        - transaction_item
       description: Delete transaction item
       parameters:
         - name: transactionItemId
@@ -73,3 +73,34 @@ paths:
       responses:
         '200':
           description: Successfully deleted transaction item
+  /transaction-item/budget/{budgetCategoryId}:
+    get:
+      operationId: getTransactionItemsForBudgetCategory
+      tags:
+        - transaction_item
+      description: Get transaction items for budget category id
+      parameters:
+        - name: budgetCategoryId
+          in: path
+          required: true
+          description: Id of user
+          schema:
+            type: integer
+            format: int64
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Month and year to get transaction items
+          example: "2026-01-01"
+          required: true
+      responses:
+        '200':
+          description: Successfully retrieved transaction items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: './transaction-items-components.yml#/components/schemas/TransactionItem'

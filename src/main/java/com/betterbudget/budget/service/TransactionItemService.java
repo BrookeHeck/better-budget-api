@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.openapitools.model.TransactionItem;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
 @Service
@@ -31,8 +34,14 @@ public class TransactionItemService {
     }
 
     public List<TransactionItem> getTransactionItemsByTransactionId(long transactionId) {
-       List<TransactionItemEntity> transactionItemEntities
-               = transactionItemRepo.getTransactionItemsByTransactionId(transactionId);
-       return transactionItemMapper.entityListToApiModelList(transactionItemEntities);
+       List<TransactionItemEntity> items = transactionItemRepo.getTransactionItemsByTransactionId(transactionId);
+       return transactionItemMapper.entityListToApiModelList(items);
+    }
+
+    public List<TransactionItem> getBudgetCategoryTransactionItems(long budgetCategoryId, LocalDate date) {
+        LocalDate end = date.with(TemporalAdjusters.lastDayOfMonth());
+        List<TransactionItemEntity> items = transactionItemRepo.getBudgetCategoryTransactionItems(
+                budgetCategoryId, date.atStartOfDay(), end.atTime(LocalTime.MAX));
+        return transactionItemMapper.entityListToApiModelList(items);
     }
 }
