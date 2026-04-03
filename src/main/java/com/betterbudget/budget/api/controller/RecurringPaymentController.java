@@ -34,6 +34,7 @@ public class RecurringPaymentController implements RecurringPaymentsApi {
     @Override
     @DeleteMapping("/recurring-payment/{recurringPaymentId}")
     public ResponseEntity<Void> deleteRecurringPayment(Long recurringPaymentId) {
+        recurringPaymentService.deleteRecurringPaymentById(recurringPaymentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

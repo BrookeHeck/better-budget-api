@@ -3,6 +3,7 @@ components:
     RecurringPayment:
       description: recurring payment details
       required:
+        - name
         - paymentInterval
         - nextPaymentDate
         - userId
@@ -13,7 +14,11 @@ components:
           format: int64
           example: 12
           description: recurring payment identifier
-        amount:
+        name:
+          type: string
+          example: Electric Bill
+          description: name of recurring payment
+        paymentAmount:
           type: number
           format: double
           example: 100.00

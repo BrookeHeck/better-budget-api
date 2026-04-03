@@ -10,6 +10,7 @@ import java.util.List;
 public interface RecurringPaymentRepository extends JpaRepository<RecurringPaymentEntity, Long> {
     @Query("""
         select r from RecurringPaymentEntity r where r.user.userId = :userId
+            order by r.nextPaymentDate, r.paymentAmount desc
     """)
     List<RecurringPaymentEntity> getRecurringPaymentEntitiesByUserId(@Param("userId") long userId);
 }
