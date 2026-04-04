@@ -47,10 +47,12 @@ public class TransactionController implements TransactionApi {
     @GetMapping("/transaction/user/{userId}")
     public ResponseEntity<List<Transaction>> getTransactionsByUserId(
             Long userId,
-            @Nullable LocalDate startDate,
-            @Nullable LocalDate endDate) {
+            LocalDate startDate,
+            LocalDate endDate,
+            @Nullable Long account,
+            @Nullable Long category) {
         return new ResponseEntity<>(
-                transactionService.getTransactionsByUserId(userId, startDate, endDate),
+                transactionService.getTransactionsByUserId(userId, startDate, endDate, account, category),
                 HttpStatus.OK);
     }
 

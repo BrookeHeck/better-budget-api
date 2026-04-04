@@ -89,6 +89,7 @@ paths:
             format: int64
         - name: startDate
           in: query
+          required: true
           schema:
             type: string
             format: date
@@ -96,11 +97,26 @@ paths:
           example: "2026-01-01"
         - name: endDate
           in: query
+          required: true
           schema:
             type: string
             format: date
           description: End date for filtering results (inclusive).
           example: "2026-01-31"
+        - name: account
+          in: query
+          schema:
+            type: integer
+            format: int64
+          description: Account id to filter transactions by
+          example: 148
+        - name: category
+          in: query
+          schema:
+            type: integer
+            format: int64
+          description: Category id to filter transactions by
+          example: 39
       responses:
         '200':
           description: Successfully retrieved transactions

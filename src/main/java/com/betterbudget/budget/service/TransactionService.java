@@ -15,6 +15,11 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import static com.betterbudget.budget.data.specification.TransactionSpec.hasAccountId;
+import static com.betterbudget.budget.data.specification.TransactionSpec.hasCategoryId;
+import static com.betterbudget.budget.data.specification.TransactionSpec.hasUserId;
+import static com.betterbudget.budget.data.specification.TransactionSpec.isBetweenDates;
+
 @Service
 @RequiredArgsConstructor
 public class TransactionService {
@@ -39,10 +44,18 @@ public class TransactionService {
         return transactionMapper.entityToApiModel(transactionRepo.getReferenceById(transactionId));
     }
 
-    public List<Transaction> getTransactionsByUserId(long transactionId, LocalDate startDate, LocalDate endDate) {
+    public List<Transaction> getTransactionsByUserId(
+            long userId, LocalDate startDate, LocalDate endDate, Long accountId, Long categoryId) {
         LocalDate end = endDate.plusDays(1);
-        return transactionMapper.entityListToApiModelList(
-                transactionRepo.findAllByUserId(transactionId, startDate.atStartOfDay(), end.atStartOfDay()));
+        List<TransactionEntity> entities = transactionRepo.findAll(
+                  hasUserId(userId)
+                  .and(isBetweenDates(startDate.atStartOfDay(), end.atStartOfDay()))
+                  .and(hasAccountId(accountId))
+                  .and(hasCategoryId(categoryId))
+        );
+        return transactionMapper.entityListToApiModelList(entities);
+//        return transactionMapper.entityListToApiModelList(
+//                transactionRepo.findAllByUserId(transactionId, startDate.atStartOfDay(), end.atStartOfDay()));
     }
 
     public Transaction createPaymentOrDepositTransaction(Transaction transaction) {
