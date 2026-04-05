@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class RecurringPaymentTasks {
     private final RecurringPaymentService recurringPaymentService;
 
-    @Scheduled(cron = "0 0 0 * * * ")
+    @Scheduled(cron = "0 0 0 * * *")
     public void updateNextPaymentDate() {
         log.info("Running recurring payment task: update next payment");
         int numUpdated = recurringPaymentService.updateNextPaymentDate();
