@@ -1,9 +1,7 @@
 package com.betterbudget.budget.data.specification;
 
-import com.betterbudget.budget.api.advice.BetterBudgetApiException;
 import com.betterbudget.budget.data.entity_model.TransactionEntity;
 import org.springframework.data.jpa.domain.PredicateSpecification;
-import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +9,7 @@ public class TransactionSpec {
     public static PredicateSpecification<TransactionEntity> hasAccountId(Long accountId) {
         return ((from, criteriaBuilder) -> {
             if(accountId == null) return null;
-            return criteriaBuilder.equal(from.get("account").get("accountId"), accountId);
+            return criteriaBuilder.equal(from.join("account").get("accountId"), accountId);
         });
     }
 
